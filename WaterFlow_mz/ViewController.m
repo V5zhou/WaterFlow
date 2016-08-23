@@ -63,17 +63,17 @@ ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
                            @"http://b.hiphotos.baidu.com/image/w%3D230/sign=95bc4fc238292df597c3ab168c305ce2/71cf3bc79f3df8dcd052057ccf11728b461028eb.jpg",
                            @"http://d.hiphotos.baidu.com/image/w%3D230/sign=0ad1d51334d3d539c13d08c00a86e927/2e2eb9389b504fc2165945e8e7dde71191ef6ddd.jpg",
                            @"http://b.hiphotos.baidu.com/image/w%3D230/sign=2aa64056a41ea8d38a227307a70b30cf/38dbb6fd5266d016107869c5952bd40734fa35fd.jpg",
+                           
                            @"http://f.hiphotos.baidu.com/image/w%3D230/sign=847d16318813632715edc530a18ea056/2934349b033b5bb55c48aa1334d3d539b700bc44.jpg",
                            @"http://b.hiphotos.baidu.com/image/w%3D230/sign=ca80bc927af0f736d8fe4b023a57b382/6f061d950a7b02081a10b50c60d9f2d3562cc806.jpg",
                            @"http://a.hiphotos.baidu.com/image/w%3D230/sign=494c2900a344ad342ebf8084e0a30c08/f11f3a292df5e0fe414a02ec5e6034a85fdf7289.jpg",
                            @"http://d.hiphotos.baidu.com/image/w%3D310/sign=38b94db9a41ea8d38a227205a70a30cf/80cb39dbb6fd5266db55c616a918972bd40736b1.jpg",
                            @"http://f.hiphotos.baidu.com/image/pic/item/c995d143ad4bd113d69bc42a58afa40f4bfb0557.jpg",
+                           
                            @"http://a.hiphotos.baidu.com/image/pic/item/9c16fdfaaf51f3de74ce436696eef01f3a2979b0.jpg",
-                           @"http://a.hiphotos.baidu.com/image/pic/item/314e251f95cad1c8ef3da6267d3e6709c93d5128.jpg",
-                           @"http://c.hiphotos.baidu.com/image/pic/item/b17eca8065380cd70b765aefa344ad345982814c.jpg",
-                           @"http://b.hiphotos.baidu.com/image/w%3D310/sign=de2acff79f2f07085f052c01d925b865/730e0cf3d7ca7bcb53ba1a97bf096b63f724a841.jpg"];
+                           @"http://a.hiphotos.baidu.com/image/pic/item/314e251f95cad1c8ef3da6267d3e6709c93d5128.jpg",];
     self.dataArray = [NSMutableArray array];
-    for (NSInteger i = 0; i < 50; i++) {
+    for (NSInteger i = 0; i < 550; i++) {
         MainModel *model = [[MainModel alloc] init];
         model.imageUrl = imagArray[i % imagArray.count];
         [_dataArray addObject:model];
@@ -95,11 +95,14 @@ ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    __weak typeof(self) weakSelf = self;
     MainCell *cell = (MainCell *) [collectionView dequeueReusableCellWithReuseIdentifier:@"MainCell"
                                                                             forIndexPath:indexPath];
+    cell.indexPath = indexPath;
     cell.model = _dataArray[indexPath.row];
-    cell.loadFinishBlock = ^() {
-        [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+    cell.sizeChanged = ^() {
+#warning 这里每次加载完图片后，得到图片的比例会再次调用刷新此item，重新计算位置，会导致效率低。最优做法是服务器返回图片宽高比例；其次把加载完成后的宽高数据也缓存起来。
+        [weakSelf.collectionView reloadItemsAtIndexPaths:@[indexPath]];
     };
     return cell;
 }
@@ -130,8 +133,8 @@ ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
     MainModel *model = _dataArray[indexPath.row];
     NSInteger lineNum = [self collectionView:_collectionView numberOfLineForSection:0];
     CGFloat width = ((SCREEN_WIDTH - 10) - (lineNum - 1) * 5) / lineNum;
-    if (model.image) {
-        CGSize imageSize = model.image.size;
+    if (model.imageSize.width > 0) {
+        CGSize imageSize = model.imageSize;
         return CGSizeMake(width, width / imageSize.width * imageSize.height);
     }
     return CGSizeMake(width, 100);
@@ -154,18 +157,17 @@ ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
 
 - (void)setModel:(MainModel *)model {
     _model = model;
-    if (model.image) {
-        _mainImgv.image = model.image;
-    } else {
-        [_mainImgv setImageWithUrl:[NSURL URLWithString:model.imageUrl] placeHolder:[UIImage imageNamed:@"loading.jpg"] completion:^(UIImage *image, BOOL bFromCache, NSError *error) {
-            if (!error && image) {
-                model.image = image;
-                if (_loadFinishBlock) {
-                    _loadFinishBlock();
+    __weak typeof(self) weakSelf = self;
+    [_mainImgv setImageWithUrl:[NSURL URLWithString:model.imageUrl] placeHolder:[UIImage imageNamed:@"loading.jpg"] completion:^(UIImage *image, BOOL bFromCache, NSError *error) {
+        if (!error && image) {
+            if (model.imageSize.width < 0.0001) {
+                model.imageSize = image.size;
+                if (weakSelf.sizeChanged) {
+                    weakSelf.sizeChanged();
                 }
             }
-        }];
-    }
+        }
+    }];
 }
 
 @end

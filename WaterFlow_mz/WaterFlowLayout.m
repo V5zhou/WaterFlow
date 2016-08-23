@@ -8,149 +8,173 @@
 
 #import "WaterFlowLayout.h"
 
-@interface
-WaterFlowLayout ()
-
-//用于瀑布流减少高低差,每个数组里都存了一个section,section内部才是对应意义值
-@property (nonatomic, strong) NSMutableArray *eachLineBottomRect; //每列底部rect值
-@property (nonatomic, assign) NSInteger shortestLine;             //最矮的列
-@property (nonatomic, assign) CGFloat shortestHeight;             //最矮的列高
-@property (nonatomic, assign) CGFloat tallestHeight;              //最高的列高
-
-@property (nonatomic, assign) NSInteger lineNum;       //列数
-@property (nonatomic, assign) NSInteger eachLineWidth; //每列宽度，现平均，以后再扩展
+#define preloadHeight 100               //豫加载上下各100
+@interface WaterFlowLayout ()
 
 //用于计算frame
-@property (nonatomic, assign) CGFloat horizontalSpace; //水平间距
-@property (nonatomic, assign) CGFloat verticalSpace;   //竖直间距
-@property (nonatomic, assign) UIEdgeInsets edgeInset;  //边距
+@property (nonatomic, assign) NSInteger lineNum;                            ///< 列数
+@property (nonatomic, assign) NSInteger eachLineWidth;                      ///< 每列宽度，现平均，以后再扩展
+@property (nonatomic, assign) CGFloat horizontalSpace;                      ///< 水平间距
+@property (nonatomic, assign) CGFloat verticalSpace;                        ///< 竖直间距
+@property (nonatomic, assign) UIEdgeInsets edgeInset;                       ///< 边距
 
 //所有frame
-@property (nonatomic, strong) NSMutableArray *layoutArray; //保存每个Frame值
+@property (nonatomic, strong) NSMutableArray<NSValue *> *rectArray;                                     ///< 保存每个Frame值
+@property (nonatomic, strong) NSMutableArray<NSValue *> *eachLineLastRectArray;                         ///< 每列的最后一个rect
+@property (nonatomic, strong) NSMutableArray<UICollectionViewLayoutAttributes *> *visibleAttributes;    ///< 可见Attributes
 
 @end
 
+//有四个必须改写项：collectionViewContentSize、layoutAttributesForElementsInRect、layoutAttributesForItemAtIndexPath:、shouldInvalidateLayoutForBoundsChange
 @implementation WaterFlowLayout
 
 - (void)prepareLayout {
     [super prepareLayout];
-
+    
     //水平间距
-    if (_delegate && [_delegate respondsToSelector:@selector(collectionView:
-                                                                                  layout:
-                                                     minimumLineSpacingForSectionAtIndex:)]) {
-        _horizontalSpace = [_delegate collectionView:self.collectionView
-                                              layout:self
-                 minimumLineSpacingForSectionAtIndex:0];
+    if (_delegate && [_delegate respondsToSelector:@selector(collectionView:layout:minimumLineSpacingForSectionAtIndex:)]) {
+        _horizontalSpace = [_delegate collectionView:self.collectionView layout:self minimumLineSpacingForSectionAtIndex:0];
     }
 
     //竖直间距
-    if (_delegate && [_delegate respondsToSelector:@selector(collectionView:
-                                                                                       layout:
-                                                     minimumInteritemSpacingForSectionAtIndex:)]) {
-        _verticalSpace = [_delegate collectionView:self.collectionView
-                                            layout:self
-          minimumInteritemSpacingForSectionAtIndex:0];
+    if (_delegate && [_delegate respondsToSelector:@selector(collectionView:layout:minimumInteritemSpacingForSectionAtIndex:)]) {
+        _verticalSpace = [_delegate collectionView:self.collectionView layout:self minimumInteritemSpacingForSectionAtIndex:0];
     }
 
     //边距
-    if (_delegate &&
-        [_delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)]) {
-        _edgeInset =
-          [_delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:0];
+    if (_delegate && [_delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)]) {
+        _edgeInset = [_delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:0];
     }
-
-    //最低行和行高
-    _shortestLine = 0;
-    _shortestHeight = 0;
-    _eachLineBottomRect = [NSMutableArray array];
-    if (_delegate && [_delegate respondsToSelector:@selector(collectionView:
-                                                     numberOfLineForSection:)]) { //获取竖行数
+    
+    //列数
+    if (_delegate && [_delegate respondsToSelector:@selector(collectionView:numberOfLineForSection:)]) {
         _lineNum = [_delegate collectionView:self.collectionView numberOfLineForSection:0];
-        _eachLineWidth = (self.collectionView.frame.size.width - _edgeInset.left -
-                          _edgeInset.right - _horizontalSpace * (_lineNum - 1)) /
-                         _lineNum;
-        for (NSInteger i = 0; i < _lineNum; i++) {
-            [_eachLineBottomRect
-              addObject:[NSValue
-                          valueWithCGRect:CGRectMake(_edgeInset.left +
-                                                       (_edgeInset.left + _eachLineWidth) * i,
-                                                     0, _eachLineWidth, 0)]];
+    }
+    
+    //每列宽度
+    _eachLineWidth = (self.collectionView.frame.size.width - _edgeInset.left - _edgeInset.right - MAX(0, _lineNum - 1) * _verticalSpace)/_lineNum;
+    
+    //初始化
+    self.rectArray = [NSMutableArray array];
+    self.eachLineLastRectArray = [NSMutableArray array];
+    
+    //计算rects，并把所有item的frame存起来
+    NSInteger count = 0;
+    if (_delegate && [_delegate respondsToSelector:@selector(collectionView:numberOfItemsInSection:)]) {
+        count = [_delegate collectionView:self.collectionView numberOfItemsInSection:0];
+    }
+    
+    for (NSInteger i = 0; i < count; i++) {
+        CGSize size = CGSizeZero;
+        if (_delegate && [_delegate respondsToSelector:@selector(collectionView:layout:sizeForItemAtIndexPath:)]) {
+            size = [_delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
         }
+        [self caculateLowestRectAppendToRectArrayAndEachLineLastRectArray:size];
     }
-
-    //准备每行frame数据
-    [self prepareLayoutArray];
 }
 
+#pragma mark - ==========================四大需要重写项=========================
 - (CGSize)collectionViewContentSize {
-    return CGSizeMake(self.collectionView.frame.size.width, _tallestHeight + _edgeInset.bottom);
+    CGRect highest = [self caculateHighestRect];
+    return CGSizeMake(self.collectionView.frame.size.width, CGRectGetMaxY(highest) + _edgeInset.bottom);
 }
 
+/**
+ *  只加载rect内部分Attributes，确保低内存
+ */
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
-    return _layoutArray;
-}
-
-//拼凑每个方块的显示样式
-- (void)prepareLayoutArray {
-
-    _layoutArray = [NSMutableArray array];
-    for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-        [_layoutArray addObject:[self makeEachLayoutAttributesAtIndexPath:indexPath]];
+    NSArray *visibleIndexPaths = [self indexPathsOfItemsInRect:rect];
+    self.visibleAttributes = [NSMutableArray array];
+    for (NSIndexPath *indexPath in visibleIndexPaths) {
+        [_visibleAttributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
     }
+    return _visibleAttributes;
 }
 
-- (UICollectionViewLayoutAttributes *)makeEachLayoutAttributesAtIndexPath:(NSIndexPath *)path {
+/**
+ *  从rectArray中取对应path的rect赋值。
+ */
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewLayoutAttributes *attributes =
-      [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
-    //取出最低列的高度
-    CGRect shortestRect = [_eachLineBottomRect[_shortestLine] CGRectValue];
-    //取出本row的高度
-    CGSize rowSize;
-    if (_delegate &&
-        [_delegate respondsToSelector:@selector(collectionView:layout:sizeForItemAtIndexPath:)]) {
-        rowSize =
-          [_delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:path];
-    }
-    //计算最终值
-    CGRect newRect = CGRectMake(shortestRect.origin.x, _shortestHeight + _verticalSpace,
-                                _eachLineWidth, rowSize.height);
-
-    //替换最新rect数组
-    [_eachLineBottomRect replaceObjectAtIndex:_shortestLine
-                                   withObject:[NSValue valueWithCGRect:newRect]];
-
-    //查找最高和最低值
-    [self resetTallestAndShortestLineIndex];
-
-    attributes.frame = newRect;
+    [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    CGRect rect = [_rectArray[indexPath.item] CGRectValue];
+    attributes.frame = rect;
     return attributes;
 }
 
-//查找最低列和最高列
-- (void)resetTallestAndShortestLineIndex {
+/**
+ *  是否应该刷新layout(理想状态是豫加载上一屏和下一屏，这样就可以避免频繁刷新，加载过多会导致内存过大，具体多远由preloadHeight控制)
+ */
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+#warning 这里直接拿第一个和最后一个计算其实不精确，以后再改进
+    CGFloat startY = CGRectGetMaxY([[_visibleAttributes firstObject] frame]);
+    CGFloat endY = CGRectGetMinY([[_visibleAttributes lastObject] frame]);
+    CGFloat offsetY = self.collectionView.contentOffset.y;
+    if (startY + preloadHeight >= offsetY ||
+        endY - preloadHeight <= offsetY + self.collectionView.frame.size.height) {
+        return YES;
+    }
+    return NO;
+}
 
-    if (_eachLineBottomRect.count < 1)
-        return;
-
-    for (NSInteger i = 0; i < _eachLineBottomRect.count; i++) {
-        CGRect rect = [_eachLineBottomRect[i] CGRectValue];
-        CGFloat rectMaxY = CGRectGetMaxY(rect);
-
-        if (i == 0) {
-            _tallestHeight = rectMaxY;
-            _shortestHeight = rectMaxY;
-            _shortestLine = 0;
-        } else {
-            if (rectMaxY > _tallestHeight) {
-                _tallestHeight = rectMaxY;
-            } else if (rectMaxY < _shortestHeight) {
-                _shortestHeight = rectMaxY;
-                _shortestLine = i;
+#pragma mark - ==================其它====================
+//计算最低rect，并把最低rect添加进rectArray和eachLineLastRectArray
+- (void)caculateLowestRectAppendToRectArrayAndEachLineLastRectArray:(CGSize)newSize {
+    CGRect newRect;
+    
+    if (_rectArray.count < _lineNum) {
+        newRect = CGRectMake(_rectArray.count * (_eachLineWidth + _horizontalSpace) + _edgeInset.left, _edgeInset.top, _eachLineWidth, newSize.height);
+        [_eachLineLastRectArray addObject:[NSValue valueWithCGRect:newRect]];
+    }
+    else {
+        CGRect lowestRect = [[_eachLineLastRectArray firstObject] CGRectValue];
+        NSInteger lowestIndex = 0;
+        for (NSInteger i = 0; i < _eachLineLastRectArray.count; i++) {
+            CGRect curruntRect = [_eachLineLastRectArray[i] CGRectValue];
+            if (CGRectGetMaxY(curruntRect) < CGRectGetMaxY(lowestRect)) {
+                lowestRect = curruntRect;
+                lowestIndex = i;
             }
         }
+        newRect = CGRectMake(lowestRect.origin.x, CGRectGetMaxY(lowestRect) + _verticalSpace, _eachLineWidth, newSize.height);
+        [_eachLineLastRectArray replaceObjectAtIndex:lowestIndex withObject:[NSValue valueWithCGRect:newRect]];
     }
+    [_rectArray addObject:[NSValue valueWithCGRect:newRect]];
+}
+
+//计算最高rect，用来调整contentSize
+- (CGRect)caculateHighestRect {
+    if (_rectArray.count < _lineNum) {
+        CGRect newRect = CGRectMake(_rectArray.count * (_eachLineWidth + _horizontalSpace) + _edgeInset.left, _edgeInset.top, _eachLineWidth, 0);
+        return newRect;
+    }
+    else {
+        CGRect highestRect = [_rectArray[_rectArray.count - _lineNum] CGRectValue];
+        for (NSInteger i = _rectArray.count - _lineNum; i < _rectArray.count; i++) {
+            CGRect curruntRect = [_rectArray[i] CGRectValue];
+            if (CGRectGetMaxY(curruntRect) > CGRectGetMaxY(highestRect)) {
+                highestRect = curruntRect;
+            }
+        }
+        return highestRect;
+    }
+}
+
+//当前应该显示到屏幕上的items
+- (NSArray *)indexPathsOfItemsInRect:(CGRect)rect {
+    CGFloat startY = self.collectionView.contentOffset.y;
+    CGFloat endY = startY + self.collectionView.frame.size.height;
+    NSMutableArray *items = [NSMutableArray array];
+    for (NSInteger i = 0; i < _rectArray.count; i++) {
+        CGRect rect = [_rectArray[i] CGRectValue];
+        if ((CGRectGetMaxY(rect) >= startY &&
+             CGRectGetMaxY(rect) <= endY ) ||
+            (CGRectGetMinY(rect) >= startY &&
+             CGRectGetMinY(rect) <= endY )) {
+                [items addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+        }
+    }
+    return items;
 }
 
 @end

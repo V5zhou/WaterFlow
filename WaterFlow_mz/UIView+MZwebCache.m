@@ -14,10 +14,6 @@
 - (void)setImageWithUrl:(NSURL *)url
             placeHolder:(UIImage *)holderImage
              completion:(MZwebCacheBlock)block {
-
-    //先加载holder
-    holderImage ? [self showImage:holderImage] : nil;
-
     //去找真实图片
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 1.搜索对应文件名
@@ -38,6 +34,9 @@
                 NSLog(@"图片地址为空");
                 return ;
             }
+            
+            //先加载holder
+            holderImage ? [self showImage:holderImage] : nil;
             
             NSError *error = nil;
             NSData *imageData =

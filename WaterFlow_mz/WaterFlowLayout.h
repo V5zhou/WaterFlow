@@ -12,7 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol WaterFlowLayoutDelegate<UICollectionViewDelegateFlowLayout>
+@protocol WaterFlowLayoutDelegate<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfLineForSection:(NSInteger)section;
