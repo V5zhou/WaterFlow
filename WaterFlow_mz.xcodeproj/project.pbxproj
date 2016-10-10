@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC0AEF701D73CF7E00EB94A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0AEF6F1D73CF7E00EB94A1 /* main.m */; };
+		FC0AEF731D73CF7E00EB94A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0AEF721D73CF7E00EB94A1 /* AppDelegate.m */; };
+		FC0AEF761D73CF7E00EB94A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0AEF751D73CF7E00EB94A1 /* ViewController.m */; };
+		FC0AEF791D73CF7E00EB94A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0AEF771D73CF7E00EB94A1 /* Main.storyboard */; };
+		FC0AEF7B1D73CF7E00EB94A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0AEF7A1D73CF7E00EB94A1 /* Assets.xcassets */; };
+		FC0AEF7E1D73CF7E00EB94A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0AEF7C1D73CF7E00EB94A1 /* LaunchScreen.storyboard */; };
+		FC0AEF851D73CFCF00EB94A1 /* CollectionAnimateFlowOut.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0AEF841D73CFCF00EB94A1 /* CollectionAnimateFlowOut.m */; };
+		FC0AEF861D73CFDD00EB94A1 /* UIView+MZwebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7E4BAC1CB6058200DDB846 /* UIView+MZwebCache.m */; };
+		FC0AEF871D73CFEE00EB94A1 /* loading.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FCB40FDB1BDF4FE8009A5031 /* loading.jpg */; };
+		FC0AEF881D73D58A00EB94A1 /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB40FD91BDF4E7F009A5031 /* MainCell.xib */; };
 		FC7E4BAD1CB6058200DDB846 /* UIView+MZwebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7E4BAC1CB6058200DDB846 /* UIView+MZwebCache.m */; };
 		FCB40FC11BDF47C6009A5031 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB40FC01BDF47C6009A5031 /* main.m */; };
 		FCB40FC41BDF47C7009A5031 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB40FC31BDF47C7009A5031 /* AppDelegate.m */; };
@@ -20,6 +30,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC0AEF6C1D73CF7D00EB94A1 /* CollectionAnimate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionAnimate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC0AEF6F1D73CF7E00EB94A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FC0AEF711D73CF7E00EB94A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FC0AEF721D73CF7E00EB94A1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FC0AEF741D73CF7E00EB94A1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FC0AEF751D73CF7E00EB94A1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FC0AEF781D73CF7E00EB94A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC0AEF7A1D73CF7E00EB94A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC0AEF7D1D73CF7E00EB94A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FC0AEF7F1D73CF7E00EB94A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC0AEF831D73CFCF00EB94A1 /* CollectionAnimateFlowOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionAnimateFlowOut.h; sourceTree = "<group>"; };
+		FC0AEF841D73CFCF00EB94A1 /* CollectionAnimateFlowOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionAnimateFlowOut.m; sourceTree = "<group>"; };
 		FC7E4BAB1CB6058200DDB846 /* UIView+MZwebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MZwebCache.h"; sourceTree = "<group>"; };
 		FC7E4BAC1CB6058200DDB846 /* UIView+MZwebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MZwebCache.m"; sourceTree = "<group>"; };
 		FCB40FBC1BDF47C6009A5031 /* WaterFlow_mz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterFlow_mz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +61,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FC0AEF691D73CF7D00EB94A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FCB40FB91BDF47C6009A5031 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,10 +78,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC0AEF6D1D73CF7E00EB94A1 /* CollectionAnimate */ = {
+			isa = PBXGroup;
+			children = (
+				FC0AEF711D73CF7E00EB94A1 /* AppDelegate.h */,
+				FC0AEF721D73CF7E00EB94A1 /* AppDelegate.m */,
+				FC0AEF741D73CF7E00EB94A1 /* ViewController.h */,
+				FC0AEF751D73CF7E00EB94A1 /* ViewController.m */,
+				FC0AEF831D73CFCF00EB94A1 /* CollectionAnimateFlowOut.h */,
+				FC0AEF841D73CFCF00EB94A1 /* CollectionAnimateFlowOut.m */,
+				FC0AEF771D73CF7E00EB94A1 /* Main.storyboard */,
+				FC0AEF7A1D73CF7E00EB94A1 /* Assets.xcassets */,
+				FC0AEF7C1D73CF7E00EB94A1 /* LaunchScreen.storyboard */,
+				FC0AEF7F1D73CF7E00EB94A1 /* Info.plist */,
+				FC0AEF6E1D73CF7E00EB94A1 /* Supporting Files */,
+			);
+			path = CollectionAnimate;
+			sourceTree = "<group>";
+		};
+		FC0AEF6E1D73CF7E00EB94A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FC0AEF6F1D73CF7E00EB94A1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		FCB40FB31BDF47C6009A5031 = {
 			isa = PBXGroup;
 			children = (
 				FCB40FBE1BDF47C6009A5031 /* WaterFlow_mz */,
+				FC0AEF6D1D73CF7E00EB94A1 /* CollectionAnimate */,
 				FCB40FBD1BDF47C6009A5031 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				FCB40FBC1BDF47C6009A5031 /* WaterFlow_mz.app */,
+				FC0AEF6C1D73CF7D00EB94A1 /* CollectionAnimate.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +155,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FC0AEF6B1D73CF7D00EB94A1 /* CollectionAnimate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC0AEF821D73CF7E00EB94A1 /* Build configuration list for PBXNativeTarget "CollectionAnimate" */;
+			buildPhases = (
+				FC0AEF681D73CF7D00EB94A1 /* Sources */,
+				FC0AEF691D73CF7D00EB94A1 /* Frameworks */,
+				FC0AEF6A1D73CF7D00EB94A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CollectionAnimate;
+			productName = CollectionAnimate;
+			productReference = FC0AEF6C1D73CF7D00EB94A1 /* CollectionAnimate.app */;
+			productType = "com.apple.product-type.application";
+		};
 		FCB40FBB1BDF47C6009A5031 /* WaterFlow_mz */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCB40FD31BDF47C7009A5031 /* Build configuration list for PBXNativeTarget "WaterFlow_mz" */;
@@ -124,6 +198,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = tentinet;
 				TargetAttributes = {
+					FC0AEF6B1D73CF7D00EB94A1 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					FCB40FBB1BDF47C6009A5031 = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
@@ -143,11 +220,24 @@
 			projectRoot = "";
 			targets = (
 				FCB40FBB1BDF47C6009A5031 /* WaterFlow_mz */,
+				FC0AEF6B1D73CF7D00EB94A1 /* CollectionAnimate */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FC0AEF6A1D73CF7D00EB94A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC0AEF881D73D58A00EB94A1 /* MainCell.xib in Resources */,
+				FC0AEF871D73CFEE00EB94A1 /* loading.jpg in Resources */,
+				FC0AEF7E1D73CF7E00EB94A1 /* LaunchScreen.storyboard in Resources */,
+				FC0AEF7B1D73CF7E00EB94A1 /* Assets.xcassets in Resources */,
+				FC0AEF791D73CF7E00EB94A1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FCB40FBA1BDF47C6009A5031 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +253,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FC0AEF681D73CF7D00EB94A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC0AEF851D73CFCF00EB94A1 /* CollectionAnimateFlowOut.m in Sources */,
+				FC0AEF761D73CF7E00EB94A1 /* ViewController.m in Sources */,
+				FC0AEF731D73CF7E00EB94A1 /* AppDelegate.m in Sources */,
+				FC0AEF701D73CF7E00EB94A1 /* main.m in Sources */,
+				FC0AEF861D73CFDD00EB94A1 /* UIView+MZwebCache.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FCB40FB81BDF47C6009A5031 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -178,6 +280,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FC0AEF771D73CF7E00EB94A1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC0AEF781D73CF7E00EB94A1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FC0AEF7C1D73CF7E00EB94A1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC0AEF7D1D73CF7E00EB94A1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		FCB40FC81BDF47C7009A5031 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -197,6 +315,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FC0AEF801D73CF7E00EB94A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = CollectionAnimate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = aicai.CollectionAnimate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FC0AEF811D73CF7E00EB94A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = CollectionAnimate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = aicai.CollectionAnimate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		FCB40FD11BDF47C7009A5031 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -237,6 +381,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				scheme = Debug;
 			};
 			name = Debug;
 		};
@@ -274,13 +419,14 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				scheme = "";
 			};
 			name = Release;
 		};
 		FCB40FD41BDF47C7009A5031 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Debug;
 				INFOPLIST_FILE = WaterFlow_mz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tentinet.WaterFlow-mz";
@@ -302,6 +448,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FC0AEF821D73CF7E00EB94A1 /* Build configuration list for PBXNativeTarget "CollectionAnimate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC0AEF801D73CF7E00EB94A1 /* Debug */,
+				FC0AEF811D73CF7E00EB94A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		FCB40FB71BDF47C6009A5031 /* Build configuration list for PBXProject "WaterFlow_mz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

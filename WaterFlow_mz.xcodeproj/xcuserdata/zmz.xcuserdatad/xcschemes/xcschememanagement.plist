@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CollectionAnimate.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>WaterFlow_mz.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>FC0AEF6B1D73CF7D00EB94A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FCB40FBB1BDF47C6009A5031</key>
 		<dict>
 			<key>primary</key>

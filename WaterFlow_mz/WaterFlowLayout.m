@@ -48,7 +48,8 @@
     
     //列数
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:numberOfLineForSection:)]) {
-        _lineNum = [_delegate collectionView:self.collectionView numberOfLineForSection:0];
+        NSInteger lineNum = [_delegate collectionView:self.collectionView numberOfLineForSection:0];
+        _lineNum = lineNum;
     }
     
     //每列宽度
@@ -172,7 +173,7 @@
             (CGRectGetMinY(rect) >= startY &&
              CGRectGetMinY(rect) <= endY )) {
                 [items addObject:[NSIndexPath indexPathForItem:i inSection:0]];
-        }
+            }
     }
     return items;
 }

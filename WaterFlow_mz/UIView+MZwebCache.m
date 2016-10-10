@@ -14,58 +14,57 @@
 - (void)setImageWithUrl:(NSURL *)url
             placeHolder:(UIImage *)holderImage
              completion:(MZwebCacheBlock)block {
-    //去找真实图片
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 1.搜索对应文件名
-        NSString *savedName = [[CachedImageManager shareInstance] imagePathForUrl:url];
-
-        // 2.如存在，则直接block;如果不存在，下载
-        if (savedName) {
-            UIImage *image =
-              [UIImage imageWithData:[NSData dataWithContentsOfFile:savedName]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self showImage:image];
-                if (block) {
-                    block(image, YES, nil);
-                }
-            });
-        } else {
-            if (url == nil) {
-                NSLog(@"图片地址为空");
-                return ;
-            }
+    __weak typeof(self) weakSelf = self;
+    @autoreleasepool {
+        //去找真实图片
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // 1.搜索对应文件名
+            NSString *savedName = [[CachedImageManager shareInstance] imagePathForUrl:url];
             
-            //先加载holder
-            holderImage ? [self showImage:holderImage] : nil;
-            
-            NSError *error = nil;
-            NSData *imageData =
-              [[NSData alloc] initWithContentsOfURL:url
-                                            options:NSDataReadingMappedIfSafe
-                                              error:&error];
-
-            if (error) { //下载失败
-                if (block) {
-                    block(nil, NO, error);
-                }
-            } else { //下载成功
-                UIImage *image = [UIImage imageWithData:imageData];
-
+            // 2.如存在，则直接block;如果不存在，下载
+            if (savedName) {
+                UIImage *image = [UIImage imageWithContentsOfFile:savedName];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self showImage:image];
+                    [weakSelf showImage:image];
                     if (block) {
-                        block(image, NO, nil);
+                        block(image, YES, nil);
                     }
                 });
-
-                //缓存
-                if (![[CachedImageManager shareInstance] cacheUrl:url
-                                                         WithData:imageData]) {
-                    NSLog(@"缓存失败");
+            }
+            else {
+                if (url == nil) {
+                    NSLog(@"图片地址为空");
+                    return ;
+                }
+                
+                //先加载holder
+                holderImage ? [weakSelf showImage:holderImage] : nil;
+                
+                NSError *error = nil;
+                NSData *imageData = [[NSData alloc] initWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:&error];
+                
+                if (error) { //下载失败
+                    if (block) {
+                        block(nil, NO, error);
+                    }
+                }
+                else { //下载成功
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf showImage:image];
+                        if (block) {
+                            block(image, NO, nil);
+                        }
+                    });
+                    
+                    //缓存
+                    if (![[CachedImageManager shareInstance] cacheUrl:url WithData:imageData]) {
+                        NSLog(@"缓存失败");
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 }
 
 - (void)setImageWithUrl:(NSURL *)url placeHolder:(UIImage *)holderImage {
@@ -121,17 +120,12 @@ CachedImageManager () {
         format.dateFormat = @"yyyyMMdd-hhmmss";
         plistContent = [NSMutableDictionary dictionary];
         fileManager = [NSFileManager defaultManager];
-        _cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,
-                                                          NSUserDomainMask, YES)[0]
-          stringByAppendingPathComponent:@"ZMZCache"];
+        _cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"ZMZCache"];
 
         //如果不存在文件夹,则创建
         if (![fileManager fileExistsAtPath:_cachePath]) {
             NSError *error = nil;
-            BOOL isok = [fileManager createDirectoryAtPath:_cachePath
-                               withIntermediateDirectories:YES
-                                                attributes:nil
-                                                     error:&error];
+            BOOL isok = [fileManager createDirectoryAtPath:_cachePath withIntermediateDirectories:YES attributes:nil error:&error];
             if (!isok) {
                 NSLog(@"%@", error);
             }

@@ -10,8 +10,7 @@
 #import "WaterFlowLayout.h"
 #import "UIView+MZwebCache.h"
 
-@interface
-ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
+@interface ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
     NSInteger lines;
 }
 
@@ -83,11 +82,10 @@ ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
 //更改列数
 - (void)changeLines:(UISegmentedControl *)segment {
     lines = segment.selectedSegmentIndex + 1;
-    [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    [_collectionView reloadData];
 }
 
 #pragma mark - UICollectionView DataSource Methods
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
     return _dataArray.count;
@@ -96,8 +94,7 @@ ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     __weak typeof(self) weakSelf = self;
-    MainCell *cell = (MainCell *) [collectionView dequeueReusableCellWithReuseIdentifier:@"MainCell"
-                                                                            forIndexPath:indexPath];
+    MainCell *cell = (MainCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"MainCell" forIndexPath:indexPath];
     cell.indexPath = indexPath;
     cell.model = _dataArray[indexPath.row];
     cell.sizeChanged = ^() {
@@ -142,7 +139,7 @@ ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
 
 - (void)collectionView:(UICollectionView *)collectionView
   didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    NSLog(@"点击了第%ld个", indexPath.row);
+    NSLog(@"点击了第%ld个", (long)indexPath.row);
 }
 
 #pragma mark - WaterFlowout代理，请填入返回多少列
@@ -168,6 +165,10 @@ ViewController ()<WaterFlowLayoutDelegate, UICollectionViewDataSource> {
             }
         }
     }];
+}
+
+- (void)dealloc {
+    NSLog(@"=======%@ =%@ deallloc",self ,[self class]);
 }
 
 @end
