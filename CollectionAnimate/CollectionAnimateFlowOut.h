@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 /*************屏幕尺寸**************/
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 
 typedef NS_ENUM(NSUInteger, CollectionAnimateStyle) {
     CollectionAnimateScale = 0,                         ///< 缩放

@@ -18,8 +18,8 @@
 
 -  (void)prepareLayout {
     [super prepareLayout];
-    self.itemSize = CGSizeMake(SCREEN_WIDTH - 30, SCREEN_HEIGHT - 40 - 30);
-    self.minimumLineSpacing = 0;
+    self.itemSize = CGSizeMake(self.collectionView.frame.size.width - 30, self.collectionView.frame.size.height - 40 - 30);
+    self.minimumLineSpacing = 30;
     self.minimumInteritemSpacing = 30;
     self.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15);
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -31,7 +31,7 @@
 }
 
 - (CGSize)collectionViewContentSize {
-    return CGSizeMake(SCREEN_WIDTH * _itemNum, SCREEN_HEIGHT - 40);
+    return CGSizeMake(self.collectionView.frame.size.width * _itemNum, self.collectionView.frame.size.height - 40);
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {

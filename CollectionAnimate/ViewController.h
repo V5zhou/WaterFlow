@@ -16,7 +16,7 @@
 @interface MainCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *mainImgv;
-@property (nonatomic, copy) NSString *URL;
+@property (nonatomic, copy) NSString *imageName;
 
 @end
 

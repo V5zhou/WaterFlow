@@ -18,6 +18,15 @@
 		FC0AEF871D73CFEE00EB94A1 /* loading.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FCB40FDB1BDF4FE8009A5031 /* loading.jpg */; };
 		FC0AEF881D73D58A00EB94A1 /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB40FD91BDF4E7F009A5031 /* MainCell.xib */; };
 		FC7E4BAD1CB6058200DDB846 /* UIView+MZwebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7E4BAC1CB6058200DDB846 /* UIView+MZwebCache.m */; };
+		FCA042581DB0CA7D0040C5DD /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA0424F1DB0CA7D0040C5DD /* 0.png */; };
+		FCA042591DB0CA7D0040C5DD /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA042501DB0CA7D0040C5DD /* 2.png */; };
+		FCA0425A1DB0CA7D0040C5DD /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA042511DB0CA7D0040C5DD /* 1.png */; };
+		FCA0425B1DB0CA7D0040C5DD /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA042521DB0CA7D0040C5DD /* 3.png */; };
+		FCA0425C1DB0CA7D0040C5DD /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA042531DB0CA7D0040C5DD /* 4.png */; };
+		FCA0425D1DB0CA7D0040C5DD /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA042541DB0CA7D0040C5DD /* 5.png */; };
+		FCA0425E1DB0CA7D0040C5DD /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA042551DB0CA7D0040C5DD /* 6.png */; };
+		FCA0425F1DB0CA7D0040C5DD /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA042561DB0CA7D0040C5DD /* 7.png */; };
+		FCA042601DB0CA7D0040C5DD /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA042571DB0CA7D0040C5DD /* 8.png */; };
 		FCB40FC11BDF47C6009A5031 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB40FC01BDF47C6009A5031 /* main.m */; };
 		FCB40FC41BDF47C7009A5031 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB40FC31BDF47C7009A5031 /* AppDelegate.m */; };
 		FCB40FC71BDF47C7009A5031 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB40FC61BDF47C7009A5031 /* ViewController.m */; };
@@ -44,6 +53,15 @@
 		FC0AEF841D73CFCF00EB94A1 /* CollectionAnimateFlowOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionAnimateFlowOut.m; sourceTree = "<group>"; };
 		FC7E4BAB1CB6058200DDB846 /* UIView+MZwebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MZwebCache.h"; sourceTree = "<group>"; };
 		FC7E4BAC1CB6058200DDB846 /* UIView+MZwebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MZwebCache.m"; sourceTree = "<group>"; };
+		FCA0424F1DB0CA7D0040C5DD /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		FCA042501DB0CA7D0040C5DD /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		FCA042511DB0CA7D0040C5DD /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		FCA042521DB0CA7D0040C5DD /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		FCA042531DB0CA7D0040C5DD /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		FCA042541DB0CA7D0040C5DD /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		FCA042551DB0CA7D0040C5DD /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		FCA042561DB0CA7D0040C5DD /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		FCA042571DB0CA7D0040C5DD /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		FCB40FBC1BDF47C6009A5031 /* WaterFlow_mz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterFlow_mz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB40FC01BDF47C6009A5031 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FCB40FC21BDF47C7009A5031 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +99,15 @@
 		FC0AEF6D1D73CF7E00EB94A1 /* CollectionAnimate */ = {
 			isa = PBXGroup;
 			children = (
+				FCA0424F1DB0CA7D0040C5DD /* 0.png */,
+				FCA042501DB0CA7D0040C5DD /* 2.png */,
+				FCA042511DB0CA7D0040C5DD /* 1.png */,
+				FCA042521DB0CA7D0040C5DD /* 3.png */,
+				FCA042531DB0CA7D0040C5DD /* 4.png */,
+				FCA042541DB0CA7D0040C5DD /* 5.png */,
+				FCA042551DB0CA7D0040C5DD /* 6.png */,
+				FCA042561DB0CA7D0040C5DD /* 7.png */,
+				FCA042571DB0CA7D0040C5DD /* 8.png */,
 				FC0AEF711D73CF7E00EB94A1 /* AppDelegate.h */,
 				FC0AEF721D73CF7E00EB94A1 /* AppDelegate.m */,
 				FC0AEF741D73CF7E00EB94A1 /* ViewController.h */,
@@ -230,10 +257,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA0425D1DB0CA7D0040C5DD /* 5.png in Resources */,
+				FCA0425F1DB0CA7D0040C5DD /* 7.png in Resources */,
+				FCA042581DB0CA7D0040C5DD /* 0.png in Resources */,
+				FCA0425A1DB0CA7D0040C5DD /* 1.png in Resources */,
 				FC0AEF881D73D58A00EB94A1 /* MainCell.xib in Resources */,
+				FCA0425B1DB0CA7D0040C5DD /* 3.png in Resources */,
+				FCA042601DB0CA7D0040C5DD /* 8.png in Resources */,
+				FCA042591DB0CA7D0040C5DD /* 2.png in Resources */,
+				FCA0425E1DB0CA7D0040C5DD /* 6.png in Resources */,
 				FC0AEF871D73CFEE00EB94A1 /* loading.jpg in Resources */,
 				FC0AEF7E1D73CF7E00EB94A1 /* LaunchScreen.storyboard in Resources */,
 				FC0AEF7B1D73CF7E00EB94A1 /* Assets.xcassets in Resources */,
+				FCA0425C1DB0CA7D0040C5DD /* 4.png in Resources */,
 				FC0AEF791D73CF7E00EB94A1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +491,7 @@
 				FC0AEF811D73CF7E00EB94A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FCB40FB71BDF47C6009A5031 /* Build configuration list for PBXProject "WaterFlow_mz" */ = {
 			isa = XCConfigurationList;
