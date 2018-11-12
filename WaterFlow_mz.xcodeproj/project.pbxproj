@@ -11,7 +11,6 @@
 		FC0AEF731D73CF7E00EB94A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0AEF721D73CF7E00EB94A1 /* AppDelegate.m */; };
 		FC0AEF761D73CF7E00EB94A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0AEF751D73CF7E00EB94A1 /* ViewController.m */; };
 		FC0AEF791D73CF7E00EB94A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0AEF771D73CF7E00EB94A1 /* Main.storyboard */; };
-		FC0AEF7B1D73CF7E00EB94A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0AEF7A1D73CF7E00EB94A1 /* Assets.xcassets */; };
 		FC0AEF7E1D73CF7E00EB94A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0AEF7C1D73CF7E00EB94A1 /* LaunchScreen.storyboard */; };
 		FC0AEF851D73CFCF00EB94A1 /* CollectionAnimateFlowOut.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0AEF841D73CFCF00EB94A1 /* CollectionAnimateFlowOut.m */; };
 		FC0AEF861D73CFDD00EB94A1 /* UIView+MZwebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7E4BAC1CB6058200DDB846 /* UIView+MZwebCache.m */; };
@@ -31,7 +30,6 @@
 		FCB40FC41BDF47C7009A5031 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB40FC31BDF47C7009A5031 /* AppDelegate.m */; };
 		FCB40FC71BDF47C7009A5031 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB40FC61BDF47C7009A5031 /* ViewController.m */; };
 		FCB40FCA1BDF47C7009A5031 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB40FC81BDF47C7009A5031 /* Main.storyboard */; };
-		FCB40FCC1BDF47C7009A5031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCB40FCB1BDF47C7009A5031 /* Assets.xcassets */; };
 		FCB40FCF1BDF47C7009A5031 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB40FCD1BDF47C7009A5031 /* LaunchScreen.storyboard */; };
 		FCB40FD81BDF4826009A5031 /* WaterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB40FD71BDF4826009A5031 /* WaterFlowLayout.m */; };
 		FCB40FDA1BDF4E7F009A5031 /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB40FD91BDF4E7F009A5031 /* MainCell.xib */; };
@@ -46,7 +44,6 @@
 		FC0AEF741D73CF7E00EB94A1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FC0AEF751D73CF7E00EB94A1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FC0AEF781D73CF7E00EB94A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FC0AEF7A1D73CF7E00EB94A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC0AEF7D1D73CF7E00EB94A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC0AEF7F1D73CF7E00EB94A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC0AEF831D73CFCF00EB94A1 /* CollectionAnimateFlowOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionAnimateFlowOut.h; sourceTree = "<group>"; };
@@ -69,7 +66,6 @@
 		FCB40FC51BDF47C7009A5031 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FCB40FC61BDF47C7009A5031 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FCB40FC91BDF47C7009A5031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FCB40FCB1BDF47C7009A5031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCB40FCE1BDF47C7009A5031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCB40FD01BDF47C7009A5031 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCB40FD61BDF4826009A5031 /* WaterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFlowLayout.h; sourceTree = "<group>"; };
@@ -115,7 +111,6 @@
 				FC0AEF831D73CFCF00EB94A1 /* CollectionAnimateFlowOut.h */,
 				FC0AEF841D73CFCF00EB94A1 /* CollectionAnimateFlowOut.m */,
 				FC0AEF771D73CF7E00EB94A1 /* Main.storyboard */,
-				FC0AEF7A1D73CF7E00EB94A1 /* Assets.xcassets */,
 				FC0AEF7C1D73CF7E00EB94A1 /* LaunchScreen.storyboard */,
 				FC0AEF7F1D73CF7E00EB94A1 /* Info.plist */,
 				FC0AEF6E1D73CF7E00EB94A1 /* Supporting Files */,
@@ -163,7 +158,6 @@
 				FCB40FD61BDF4826009A5031 /* WaterFlowLayout.h */,
 				FCB40FD71BDF4826009A5031 /* WaterFlowLayout.m */,
 				FCB40FC81BDF47C7009A5031 /* Main.storyboard */,
-				FCB40FCB1BDF47C7009A5031 /* Assets.xcassets */,
 				FCB40FCD1BDF47C7009A5031 /* LaunchScreen.storyboard */,
 				FCB40FD01BDF47C7009A5031 /* Info.plist */,
 				FCB40FBF1BDF47C6009A5031 /* Supporting Files */,
@@ -230,6 +224,7 @@
 					};
 					FCB40FBB1BDF47C6009A5031 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = YH6XM8252K;
 					};
 				};
 			};
@@ -268,7 +263,6 @@
 				FCA0425E1DB0CA7D0040C5DD /* 6.png in Resources */,
 				FC0AEF871D73CFEE00EB94A1 /* loading.jpg in Resources */,
 				FC0AEF7E1D73CF7E00EB94A1 /* LaunchScreen.storyboard in Resources */,
-				FC0AEF7B1D73CF7E00EB94A1 /* Assets.xcassets in Resources */,
 				FCA0425C1DB0CA7D0040C5DD /* 4.png in Resources */,
 				FC0AEF791D73CF7E00EB94A1 /* Main.storyboard in Resources */,
 			);
@@ -280,7 +274,6 @@
 			files = (
 				FCB40FDC1BDF4FE8009A5031 /* loading.jpg in Resources */,
 				FCB40FCF1BDF47C7009A5031 /* LaunchScreen.storyboard in Resources */,
-				FCB40FCC1BDF47C7009A5031 /* Assets.xcassets in Resources */,
 				FCB40FDA1BDF4E7F009A5031 /* MainCell.xib in Resources */,
 				FCB40FCA1BDF47C7009A5031 /* Main.storyboard in Resources */,
 			);
@@ -463,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Debug;
+				DEVELOPMENT_TEAM = YH6XM8252K;
 				INFOPLIST_FILE = WaterFlow_mz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tentinet.WaterFlow-mz";
@@ -474,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YH6XM8252K;
 				INFOPLIST_FILE = WaterFlow_mz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tentinet.WaterFlow-mz";
